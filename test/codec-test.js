@@ -2,15 +2,16 @@
 
 'use strict'
 
+const Buffer = require('buffer').Buffer
 const assert = require('assert')
 const api = require('../')
 
 function toHex(bytes) {
-  return new Buffer(bytes).toString('hex').toUpperCase()
+  return new Buffer.from(bytes).toString('hex').toUpperCase()
 }
 
 function toBytes(hex) {
-  return new Buffer(hex, 'hex').toJSON().data
+  return new Buffer.from(hex, 'hex').toJSON().data
 }
 
 describe('swtc-address-codec', function() {

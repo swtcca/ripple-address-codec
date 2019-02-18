@@ -11,7 +11,7 @@ const ED25519_SEED = [0x01, 0xE1, 0x4B]
 
 module.exports = apiFactory({
   sha256: function(bytes) {
-    return createHash('sha256').update(new Buffer(bytes)).digest()
+    return createHash('sha256').update(new Buffer.from(bytes)).digest()
   },
   defaultAlphabet: 'jingtum',
   codecMethods: {
