@@ -13,7 +13,7 @@ module.exports = apiFactory({
   sha256: function(bytes) {
     return createHash('sha256').update(new Buffer.from(bytes)).digest()
   },
-  defaultAlphabet: 'jingtum',
+  defaultAlphabet: 'bizain',
   codecMethods: {
     EdSeed: {
       expectedLength: 16,

@@ -1,12 +1,12 @@
 {
-  "name": "swtc-address-codec",
+  "name": "bwt-address-codec",
   "version": "2.0.3",
-  "description": "encodes/decodes base58 encoded ripple identifiers",
+  "description": "encodes/decodes base58 Bizain identifiers",
   "main": "src/index.js",
   "license": "ISC",
   "dependencies": {
     "create-hash": "^1.1.2",
-    "swtc-x-address-codec": "^0.7.2"
+    "swtc-x-address-codec": "^0.7.3"
   },
   "repository": {
     "type": "git",
@@ -28,8 +28,8 @@
   },
   "keywords": [
     "codec",
-    "swtc",
-    "jingtum",
+    "bwt",
+    "bizain",
     "address"
   ],
   "readmeFilename": "README.md",

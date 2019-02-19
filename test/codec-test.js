@@ -14,7 +14,7 @@ function toBytes(hex) {
   return new Buffer.from(hex, 'hex').toJSON().data
 }
 
-describe('swtc-address-codec', function() {
+describe('bwt-address-codec', function() {
   function makeTest(type, base58, hex) {
     it('can translate between ' + hex + ' and ' + base58, function() {
       const actual = api['encode' + type](toBytes(hex))
