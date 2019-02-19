@@ -1,12 +1,12 @@
 {
   "name": "swtc-address-codec",
-  "version": "2.0.3",
-  "description": "encodes/decodes base58 encoded ripple identifiers",
+  "version": "2.0.4",
+  "description": "encode decode base58 SWTC identifiers",
   "main": "src/index.js",
   "license": "ISC",
   "dependencies": {
     "create-hash": "^1.1.2",
-    "swtc-x-address-codec": "^0.7.2"
+    "swtc-x-address-codec": "^0.7.3"
   },
   "repository": {
     "type": "git",
