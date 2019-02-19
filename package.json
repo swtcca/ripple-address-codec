@@ -1,6 +1,6 @@
 {
   "name": "swtc-address-codec",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "encodes/decodes base58 encoded ripple identifiers",
   "main": "src/index.js",
   "license": "ISC",
@@ -26,6 +26,12 @@
     "istanbul": "~0.3.21",
     "mocha": "^5.0.5"
   },
+  "keywords": [
+    "codec",
+    "swtc",
+    "jingtum",
+    "address"
+  ],
   "readmeFilename": "README.md",
   "engines": {
     "node": ">=0.12.0"
