@@ -1,41 +1,38 @@
-# ripple-address-codec [![NPM](https://img.shields.io/npm/v/ripple-address-codec.svg)](https://npmjs.org/package/ripple-address-codec) [![Build Status](https://img.shields.io/travis/ripple/ripple-address-codec/master.svg)](https://travis-ci.org/ripple/ripple-address-codec) [![codecov.io](http://codecov.io/github/ripple/ripple-address-codec/coverage.svg?branch=master)](http://codecov.io/github/ripple/ripple-address-codec?branch=master)
+# swtc-address-codec
 
 ## API
 
 ```js
-> var api = require('ripple-address-codec');
-> api.decodeSeed('sEdTM1uX8pu2do5XvTnutH6HsouMaM2')
-{ version: [ 1, 225, 75 ],
-  bytes: [ 76, 58, 29, 33, 63, 189, 251, 20, 199, 194, 141, 96, 148, 105, 179, 65 ],
-  type: 'ed25519' }
-> api.decodeSeed('sn259rEFXrQrWyx3Q7XneWcwV6dfL')
+> var api = require('swtc-address-codec');
+> api.decodeSeed('snwJzMKPjEBodxVU8YqwAH7PpZe4j')
 { version: 33,
-  bytes: [ 207, 45, 227, 120, 251, 221, 126, 46, 232, 125, 72, 109, 251, 90, 123, 255 ],
+  bytes:
+   [ 176, 251, 212, 225, 99, 149, 131, 65, 41, 207, 158, 225, 190, 176, 6, 156 ],
   type: 'secp256k1' }
-> api.decodeAccountID('rJrRMgiRgrU6hDF4pgu5DXQdWyPbY35ErN')
-[ 186,
-  142,
-  120,
-  98,
-  110,
-  228,
-  44,
-  65,
-  180,
-  109,
-  70,
-  195,
-  4,
-  141,
-  243,
-  161,
-  195,
-  200,
-  112,
-  114 ]
+> api.decodeAccountID('jPo32F1gUA4TtPzquhNBEq1L1wXmcghqUi')
+[ 250,
+  12,
+  59,
+  75,
+  102,
+  13,
+  118,
+  27,
+  45,
+  216,
+  138,
+  231,
+  43,
+  56,
+  233,
+  175,
+  217,
+  75,
+  252,
+  20 ]
 ```
 
-## And ?? There's more to the wonderful world then ripple
+## And ?? There's more to the wonderful world then swtc
 
 We give you the kitchen sink.
 
@@ -44,19 +41,33 @@ We give you the kitchen sink.
 { Codec: [Function: AddressCodec],
   codecs:
    { bitcoin:
-      { alphabet: '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz',
+      AddressCodec {
+        alphabet: '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz',
         codec: [Object],
         base: 58 },
      ripple:
-      { alphabet: 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz',
+      AddressCodec {
+        alphabet: 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz',
         codec: [Object],
         base: 58 },
      tipple:
-      { alphabet: 'RPShNAF39wBUDnEGHJKLM4pQrsT7VWXYZ2bcdeCg65jkm8ofqi1tuvaxyz',
+      AddressCodec {
+        alphabet: 'RPShNAF39wBUDnEGHJKLM4pQrsT7VWXYZ2bcdeCg65jkm8ofqi1tuvaxyz',
+        codec: [Object],
+        base: 58 },
+     jingtum:
+      AddressCodec {
+        alphabet: 'jpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65rkm8oFqi1tuvAxyz',
+        codec: [Object],
+        base: 58 },
+     bizain:
+      AddressCodec {
+        alphabet: 'bpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2jcdeCg65rkm8oFqi1tuvAxyz',
         codec: [Object],
         base: 58 },
      stellar:
-      { alphabet: 'gsphnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCr65jkm8oFqi1tuvAxyz',
+      AddressCodec {
+        alphabet: 'gsphnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCr65jkm8oFqi1tuvAxyz',
         codec: [Object],
         base: 58 } },
   decode: [Function: decode],
@@ -82,18 +93,4 @@ We give you the kitchen sink.
   decodeK256Seed: [Function],
   encodeK256Seed: [Function],
   isValidK256Seed: [Function] }
-```
-
-# Decode a bip32 bitcoin public key
-
-```js
-var pubVersion = [0x04, 0x88, 0xB2, 0x1E];
-var options = {version: pubVersion, alphabet: 'bitcoin'};
-var key = 'xpub661MyMwAqRbcEYS8w7XLSVeEsBXy79zSzH1J8vCdxAZningWLdN3zgtU6LBpB85b3D2yc8sfvZU521AAwdZafEz7mnzBBsz4wKY5e4cp9LB';
-var decoded = api.decode(key, options);
-var reencoded = api.encode(decoded, options);
-console.log(key);
-// 'xpub661MyMwAqRbcEYS8w7XLSVeEsBXy79zSzH1J8vCdxAZningWLdN3zgtU6LBpB85b3D2yc8sfvZU521AAwdZafEz7mnzBBsz4wKY5e4cp9LB'
-console.log(reencoded);
-// 'xpub661MyMwAqRbcEYS8w7XLSVeEsBXy79zSzH1J8vCdxAZningWLdN3zgtU6LBpB85b3D2yc8sfvZU521AAwdZafEz7mnzBBsz4wKY5e4cp9LB'
 ```

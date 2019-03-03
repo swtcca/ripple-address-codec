@@ -7,11 +7,11 @@ const assert = require('assert')
 const api = require('../')
 
 function toHex(bytes) {
-  return new Buffer.from(bytes).toString('hex').toUpperCase()
+  return Buffer.from(bytes).toString('hex').toUpperCase()
 }
 
 function toBytes(hex) {
-  return new Buffer.from(hex, 'hex').toJSON().data
+  return Buffer.from(hex, 'hex').toJSON().data
 }
 
 describe('swtc-address-codec', function() {
