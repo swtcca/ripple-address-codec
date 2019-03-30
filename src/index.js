@@ -1,7 +1,12 @@
 "use strict"
 
 const createHash = require("create-hash")
-const apiFactory = require("swtc-x-address-codec")
+const apiFactory = require("x-address-codec")
+const SWTC_CHAINS = require("swtc-chains")
+var alphabets = {}
+SWTC_CHAINS.map(
+  chain_info => (alphabets[chain_info.code] = chain_info.ACCOUNT_ALPHABET)
+)
 
 const NODE_PUBLIC = 28
 const NODE_PRIVATE = 32
@@ -15,6 +20,7 @@ module.exports = apiFactory({
       .update(new Buffer.from(bytes))
       .digest()
   },
+  alphabets,
   defaultAlphabet: "jingtum",
   codecMethods: {
     EdSeed: {
