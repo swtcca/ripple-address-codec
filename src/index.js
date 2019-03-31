@@ -11,24 +11,32 @@ const FAMILY_SEED = 33
 const ED25519_SEED = [0x01, 0xe1, 0x4b]
 
 function getAddressCodec(chain_or_token = "jingtum") {
-  let filtered_chains = SWTC_CHAINS.filter(
+  let chain,
+    defaultAlphabet,
+    alphabets = {},
+    filtered_chains = []
+  filtered_chains = SWTC_CHAINS.filter(
     chain =>
       chain.code.toLowerCase() === chain_or_token.toLowerCase() ||
       chain.currency.toUpperCase() === chain_or_token.toUpperCase()
   )
   if (filtered_chains.length !== 1) {
-    throw new Error(
-      "the chain you specified is not available from swtc-chains yet"
-    )
+    // if it is not provided in SWTC_CHAINS
+    throw new Error("the chain you specified is not available yet")
   } else {
-    let chain = filtered_chains[0]
+    chain = filtered_chains[0]
+    defaultAlphabet = chain.code
+    if (!("simple" in chain)) {
+      alphabets = { [chain.code]: chain.ACCOUNT_ALPHABET }
+    }
     return apiFactory({
       sha256: function(bytes) {
         return createHash("sha256")
           .update(new Buffer.from(bytes))
           .digest()
       },
-      alphabets: { [chain.code]: chain.ACCOUNT_ALPHABET },
+      alphabets,
+      defaultAlphabet,
       codecMethods: {
         EdSeed: {
           expectedLength: 16,
